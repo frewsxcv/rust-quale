@@ -1,9 +1,6 @@
 use std::{env, ffi, fs, path};
 
-#[cfg(all(unix, not(target_os = "linux")))]
 use std::os::unix::fs::PermissionsExt;
-#[cfg(target_os = "linux")]
-use std::os::linux::fs::PermissionsExt;
 
 extern crate libc;
 
@@ -38,12 +35,9 @@ pub fn which<S: AsRef<ffi::OsStr>>(name: S) -> Option<path::PathBuf> {
 }
 
 fn is_executable(file: &fs::DirEntry) -> bool {
-    let file_metadata = match file.metadata() {
+    // Don't use `file.metadata()` directly since it doesn't follow symlinks.
+    let file_metadata = match file.path().metadata() {
         Ok(metadata) => metadata,
-        Err(..) => return false,
-    };
-    let file_type = match file.file_type() {
-        Ok(type_) => type_,
         Err(..) => return false,
     };
     let file_path = match file.path()
@@ -59,7 +53,7 @@ fn is_executable(file: &fs::DirEntry) -> bool {
         (libc::S_IEXEC | libc::S_IXGRP | libc::S_IXOTH) as u32;
     let has_executable_flag =
         file_metadata.permissions().mode() & EXECUTABLE_FLAGS != 0;
-    is_executable_by_user && has_executable_flag && file_type.is_file()
+    is_executable_by_user && has_executable_flag && file_metadata.is_file()
 }
 
 #[cfg(test)]
