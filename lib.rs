@@ -22,7 +22,6 @@ pub fn which<S: AsRef<ffi::OsStr>>(name: S) -> Option<path::PathBuf> {
     let dirs_iter = paths_iter.filter_map(|path| fs::read_dir(path).ok());
 
     for dir in dirs_iter {
-        //
         let mut matches_iter = dir.filter_map(|file| file.ok())
                                   .filter(|file| file.file_name() == name)
                                   .filter(is_executable);
