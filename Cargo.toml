@@ -1,0 +1,10 @@
+[package]
+name = "which"
+version = "0.1.0"
+authors = ["Corey Farwell <coreyf@rwell.org>"]
+
+[lib]
+path = "lib.rs"
+
+[dependencies]
+libc = "0.2"
