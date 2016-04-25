@@ -2,6 +2,8 @@
 
 A Rust port of the `which` utility. Locates an executable in the user's path.
 
+*Note: rust-which currently only works on Unix-like operating systems.*
+
 ## Usage
 
 ```toml
