@@ -1,20 +1,22 @@
-# rust-which
+# rust-quale
 
 A Rust port of the `which` utility. Locates an executable in the user's path.
 
-*Note: rust-which currently only works on Unix-like operating systems.*
+‘Quale’ is an Italian translation of the English word ‘which’.
+
+*Note: rust-quale currently only works on Unix-like operating systems.*
 
 ## Usage
 
 ```toml
 [dependencies]
-which = "1.0"
+quale = "1.0"
 ```
 
 ```rust
-extern crate which;
+extern crate quale;
 
-use which::which;
+use quale::which;
 
 fn main() {
     assert_eq!(
