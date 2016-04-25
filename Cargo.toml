@@ -1,6 +1,6 @@
 [package]
 name = "which"
-version = "0.1.0"
+version = "1.0.0"
 authors = ["Corey Farwell <coreyf@rwell.org>"]
 description = "A Rust port of the `which` utility. Locates an executable in the user's path."
 keywords = ["which", "path", "executable", "env", "locate"]
