@@ -1,9 +1,6 @@
 use std::{env, ffi, fs, path};
 
-#[cfg(all(unix, not(target_os = "linux")))]
 use std::os::unix::fs::PermissionsExt;
-#[cfg(target_os = "linux")]
-use std::os::linux::fs::PermissionsExt;
 
 extern crate libc;
 
