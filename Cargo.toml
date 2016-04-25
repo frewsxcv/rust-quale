@@ -4,7 +4,7 @@ version = "1.0.0"
 authors = ["Corey Farwell <coreyf@rwell.org>"]
 description = "A Rust port of the `which` utility. Locates an executable in the user's path."
 keywords = ["which", "path", "executable", "env", "locate"]
-repository ="https://github.com/frewsxcv/rust-quale"
+repository = "https://github.com/frewsxcv/rust-quale"
 license = "MIT/Apache-2.0"
 
 [lib]
