@@ -1,6 +1,6 @@
 # rust-which
 
-The `which` utility, written as a Rust library.
+A Rust port of the `which` utility. Locates an executable in the user's path.
 
 ## License
 
