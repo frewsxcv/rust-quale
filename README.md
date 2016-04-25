@@ -2,6 +2,31 @@
 
 A Rust port of the `which` utility. Locates an executable in the user's path.
 
+*Note: rust-which currently only works on Unix-like operating systems.*
+
+## Usage
+
+```toml
+[dependencies]
+which = "1.0"
+```
+
+```rust
+extern crate which;
+
+use which::which;
+
+fn main() {
+    assert_eq!(
+        which("sh"),
+        Some("/bin/sh".into()));
+
+    assert_eq!(
+        which("foobar"),
+        None);
+}
+```
+
 ## License
 
 Licensed under either of
