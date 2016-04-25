@@ -1,6 +1,6 @@
 # rust-quale
 
-A Rust port of the `which` utility. Locates an executable in the user's path.
+A Rust port of the `which` utility. Locates an executable in the user’s path.
 
 ‘Quale’ is an Italian translation of the English word ‘which’.
 
