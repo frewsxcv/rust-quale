@@ -7,16 +7,13 @@ extern crate libc;
 pub fn which<S: AsRef<ffi::OsStr>>(name: S) -> Option<path::PathBuf> {
     let name: &ffi::OsStr = name.as_ref();
 
-    // FIXME: This should use `env::var_os`, but `OsStr` doesn't implement
-    //        any sort of 'splitting' method.
-    //        https://github.com/rust-lang/rfcs/pull/1309
-    let var = match env::var("PATH") {
-        Ok(var) => var,
-        Err(..) => return None,
+    let var = match env::var_os("PATH") {
+        Some(var) => var,
+        None => return None,
     };
 
     // Separate PATH value into paths
-    let paths_iter = var.split(":");
+    let paths_iter = env::split_paths(&var);
 
     // Attempt to read each path as a directory
     let dirs_iter = paths_iter.filter_map(|path| fs::read_dir(path).ok());
